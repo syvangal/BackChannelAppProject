@@ -1,0 +1,22 @@
+<h1>Reply post</h1>
+
+<h3>Original Post</h3>
+<br>
+<div style="background-color: #C0C0C0">
+    <%= @post.postString %>
+</div>
+<br>
+<%= form_tag(posts_createreply_path(:parentPostID => @post.id)) do %>
+  <div class="field">
+    <p>
+        <label for="replyContent">
+        </label>
+        <%= text_area_tag('replyContent') %>
+    </p>
+    <p>
+        <%= submit_tag "Post reply" %>
+    </p>
+  </div>
+<% end %>
+
+<%= link_to "Cancel", posts_path %>

@@ -1,0 +1,49 @@
+<h1>Search Results</h1>
+<br>
+<br>
+
+<table >
+      <% if(session[:userName] != nil) %>
+    <td  style="right: 15px; position: absolute" title="Create New Post"><%= link_to 'New Post', new_post_path %>
+      <td  style="right: 95px; position: absolute" title="See All Posts"><%= link_to 'All Posts', posts_path %></td>
+     <% end %>
+      </table>
+    <br>
+<br>
+<table>
+      <% if(@posts.blank?) %>
+            <div>
+                Sorry,No results for this criteria!
+            </div>
+        </td>
+      <% else %>
+      <tr>
+    <th width="200" align="left">Post</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.postString %>
+    </td>
+
+    <% if(session[:userName] != nil) %>
+        <td><%= link_to 'Show', post %>
+        <%= " | " %>   </td>
+        <td><%= link_to 'Edit', edit_post_path(post) %>
+        <%= " | " %>  </td>
+        <td><%= link_to 'Delete', post, confirm: 'Are you sure?', method: :delete %></td>
+         <% end %>
+    <% end %>
+  </tr>
+  <tr></tr>
+<% end %>
+</table>
+
+<br />
+
+<% if(session[:userName] == nil) %>
+   <%= link_to 'Login Page', root_path %>
+<% end %>

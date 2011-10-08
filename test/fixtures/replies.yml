@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  postId: 
+  reply: MyText
+  repliedUser: MyString
+
+two:
+  postId: 
+  reply: MyText
+  repliedUser: MyString

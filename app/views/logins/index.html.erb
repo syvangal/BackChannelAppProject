@@ -1,0 +1,23 @@
+<fieldset>
+  <legend>Please Log In</legend>
+  <%= form_tag :url => 'login/create' %>
+   <p>
+  <label for="name">UserName:</label>
+  <%= text_field_tag :name %>
+  </p>
+
+  <p>
+   <label for="password">Password:</label>
+   <%= password_field_tag :password%>
+   </p>
+  <p id="notice" style="color: red"><%= notice %></p>
+
+   <p>
+    <%= submit_tag "Login" %>
+    </p>
+
+  <%= link_to 'Create an account', new_user_path %>
+
+   </fieldset>
+
+  </div>

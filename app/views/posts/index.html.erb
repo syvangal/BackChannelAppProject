@@ -1,0 +1,78 @@
+<div >
+<h1>Active Posts</h1>
+    <br />
+  <table >
+
+    <td  style="right: 15px; position: absolute" title="Create New Post"><%= link_to 'New Post', new_post_path %>
+
+      </table>
+      <br>
+    <br>
+    <% @parentPosts = Array.new
+       @postsByWeight.each do |post|
+           if(post.id == post.parentPostID)
+               @parentPosts << post
+           end
+       end
+    %>
+
+    <fieldset style=" border-style:dotted dotted dotted dotted; border-color:#330066;overflow-y:auto;">
+      <% @parentPosts.each do |parentPost| %>
+          <table width = "800" height = "50">
+            <tr>
+                <td height = 20 width = 40 bgcolor="#AD99C2" align="center" >
+                    <%= Vote.find_all_by_post_id(parentPost.id).length %>
+                    <br />
+                    <% if(parentPost.user_id == User.find_by_userName(session[:userName]).id) %>
+                        <div><i>Owner</i></div>
+                    <% else %>
+                        <%  @findVote = Array.new
+                            @findVote = Vote.find_all_by_post_id(parentPost.id)
+                            @foundFlag = false
+                            @findVote.each do
+                                |vote|
+                                if(vote.user_id == User.find_by_userName(session[:userName]).id)
+                                    @foundFlag = true
+                                end
+                            end
+                        %>
+                        <% if(@foundFlag == false) %>
+                            <%= link_to 'Vote', posts_vote_path(:id => parentPost.id) %>
+                        <% elsif(@foundFlag == true) %>
+                            <div><i>Voted</i></div>
+                        <% end %>
+                    <% end %>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <%= link_to parentPost.postString, parentPost %>
+                </td>
+            </tr>
+            <tr rowspan="20"><td></td></tr>
+          </table>
+
+          <div align="right">
+            <%= User.find(parentPost.user_id).userName %>
+
+            <% if(parentPost.user_id == User.find_by_userName(session[:userName]).id) %>
+               <%= " | " %>
+               <%= link_to 'Edit', edit_post_path(parentPost) %>
+            <% end %>
+
+            <% if(session[:role] == 'admin') %>
+               <%= " | " %>
+               <%= link_to 'Delete', parentPost, confirm: 'Are you sure?', method: :delete %>
+            <% end %>
+            <%= " | " %>
+            <%= link_to 'Reply', posts_reply_path(:id => parentPost.id) %>
+          </div>
+          <hr >
+        <% end %>
+    </fieldset>
+
+<br />
+
+
+</div>

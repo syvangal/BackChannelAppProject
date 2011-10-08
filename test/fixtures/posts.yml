@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyText
+  votesReceived: 
+  postOwner: MyString
+  anonymous: MyString
+  status: MyString
+  spam: MyString
+
+two:
+  description: MyText
+  votesReceived: 
+  postOwner: MyString
+  anonymous: MyString
+  status: MyString
+  spam: MyString

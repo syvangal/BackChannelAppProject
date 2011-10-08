@@ -1,0 +1,146 @@
+<br>
+<br>
+
+ <table >
+
+    <td  style="right: 15px; position: absolute" title="Create New Post"><%= link_to 'New Post', new_post_path %>
+      <td  style="right: 95px; position: absolute" title="See All Posts"><%= link_to 'All Posts', posts_path %></td>
+      </table>
+
+<br/>
+<br/>
+    <fieldset >
+      <legend><b>Post</b></legend>
+        <table width = "800" height = "50">
+          <tr>
+            <td height = 20 width = 40 bgcolor="#AD99C2" align="center" >
+              <%= Vote.find_all_by_post_id(@childPosts[0].id).length %>
+              <% if(session[:userName] != nil) %>
+                <br />
+                <% if(@childPosts[0].user_id == User.find_by_userName(session[:userName]).id) %>
+                    <div><i>Owner</i></div>
+                <% else %>
+                    <%  @findVote = Array.new
+                        @findVote = Vote.find_all_by_post_id(@childPosts[0].id)
+                        @foundFlag = false
+                        @findVote.each do
+                            |vote|
+                            if(vote.user_id == User.find_by_userName(session[:userName]).id)
+                            @foundFlag = true
+                            end
+                        end
+                    %>
+                    <% if(@foundFlag == false) %>
+                        <%= link_to 'Vote', posts_vote_path(:id => @childPosts[0].id) %>
+                    <% elsif(@foundFlag == true) %>
+                        <div><i>Voted</i></div>
+                    <% end %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+
+            </td>
+            <td>
+              <%= @childPosts[0].postString %>
+            </td>
+          </tr>
+        </table>
+
+      <div align="right">
+        <%= User.find(@childPosts[0].user_id).userName %>
+
+        <% if(session[:userName] != nil) %>
+            <% if(@childPosts[0].user_id == User.find_by_userName(session[:userName]).id) %>
+                <%= " | " %>
+                <%= link_to 'Edit', edit_post_path(@childPosts[0]) %>
+            <% end %>
+
+            <% if(session[:role] == 'admin') %>
+                <%= " | " %>
+                <%= link_to 'Remove', @childPosts[0], confirm: 'Are you sure?', method: :delete %>
+            <% end %>
+            <%= " | " %>
+            <%= link_to 'Reply', posts_reply_path(:id => @childPosts[0].id) %>
+        <% end %>
+      </div>
+    </fieldset>
+
+    <br />
+    <br />
+
+    <fieldset>
+        <legend><b>Replies</b></legend>
+
+        <% if(@childPosts.length == 1) %>
+            <div>
+                No replies for this post.
+            </div>
+
+        <% else %>
+
+            <% for i in 1..@childPosts.length-1 %>
+                <table width = "200" height = "50">
+                  <tr>
+                    <td height = 20 width = 40 align="center" bgcolor="#AD99C2" >
+                      <%= Vote.find_all_by_post_id(@childPosts[i].id).length %>
+                      <% if(session[:userName] != nil) %>
+                        <br />
+                        <% if(@childPosts[i].user_id == User.find_by_userName(session[:userName]).id) %>
+                            <div><i>Owner</i></div>
+                        <% else %>
+                            <%  @findVote = Array.new
+                                @findVote = Vote.find_all_by_post_id(@childPosts[i].id)
+                                @foundFlag = false
+                                @findVote.each do
+                                    |vote|
+                                    if(vote.user_id == User.find_by_userName(session[:userName]).id)
+                                    @foundFlag = true
+                                    end
+                                end
+                            %>
+                            <% if(@foundFlag == false) %>
+                                <%= link_to 'Vote', posts_vote_path(:id => @childPosts[i].id) %>
+                            <% elsif(@foundFlag == true) %>
+                                <div><i>Voted</i></div>
+                            <% end %>
+                        <% end %>
+                      <% end %>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                      <%= @childPosts[i].postString %>
+                    </td>
+                  </tr>
+                  </table>
+
+                  <div align="right">
+                    <%= User.find(@childPosts[i].user_id).userName %>
+
+                    <% if(session[:userName] != nil) %>
+                        <% if(@childPosts[i].user_id == User.find_by_userName(session[:userName]).id) %>
+                            <%= " | " %>
+                            <%= link_to 'Edit', edit_post_path(@childPosts[i]) %>
+                        <% end %>
+
+                        <% if(session[:role] == 'admin') %>
+                            <%= " | " %>
+                            <%= link_to 'Remove', @childPosts[i], confirm: 'Are you sure?', method: :delete %>
+                        <% end %>
+                        <%= " | " %>
+                        <%= link_to 'Reply', posts_reply_path(:id => @childPosts[i].id) %>
+                    <% end %>
+                  </div>
+              <% if(i != (@childPosts.length-1)) %>
+                <hr />
+              <% end %>
+            <% end %>
+        <% end %>
+    </fieldset>
+
+<br />
+<br />
+<br />
+<br />

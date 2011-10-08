@@ -1,0 +1,34 @@
+<br>
+<p id="notice" style="color: green;"><%= notice %></p>
+  <br>
+
+<p>
+  <b>Username:</b>
+  <%= @user.userName %>
+</p>
+
+<p>
+  <b>Unityid:</b>
+  <%= @user.unityId %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+<p>
+  <b>Emailaddress:</b>
+  <%= @user.emailAddress %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'See posts', posts_path %> |
+
+
