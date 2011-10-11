@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  #this is to cehck the session so we redirect to application controller, authorize method.
-  before_filter :authorize, :except => :new
+  #this is to check the session so we redirect to application controller, authorize method.
+  #before_filter :authorize, :except => :new
   def index
     @users = User.all
 
