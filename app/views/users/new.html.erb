@@ -4,4 +4,9 @@
 <br>
 
 
+<% if(session[:role] == 'admin') %>
+   <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+    <% else %>
+   <%= link_to 'Login Page', logins_path %>
+<% end %>
