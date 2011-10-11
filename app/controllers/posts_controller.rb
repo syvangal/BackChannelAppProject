@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
 
   # GET /posts.json
+  #this is to check the sessions.
     before_filter :authorize, :except => :search
    #This method is used to display all the posts.So here we take the Weight which we gave to each post.
   #This weight will be used in displaying the posts.

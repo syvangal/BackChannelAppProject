@@ -1,7 +1,7 @@
 class LoginsController < ApplicationController
   # GET /logins
   # GET /logins.json
-  #This method is to show the login screen with sessions cleared.
+  #This method is to show the login screen when redirected with sessions cleared.
   def index
     session[:userName] = nil
     session[:role]= nil
