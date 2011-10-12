@@ -1,15 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  userName: MyString
-  unityId: MyString
-  password: MyString
-  emailAddress: MyString
-  role: MyString
+  userName: jdj
+  password: 123545
+  role: user
 
 two:
-  userName: MyString
-  unityId: MyString
-  password: MyString
-  emailAddress: MyString
-  role: MyString
+  userName: Admin
+  password: 1235456
+  role: admin
+
+
+three:
+  userName: abc
+  password: 1235456
+  role: admin
+  unityId: 1234
+
+
+four:
+  userName: nil
+  unityId: nil
+  password: 1513
+  emailAddress: padff@mff
+  role: Admin
