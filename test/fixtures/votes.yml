@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  postid: 
-  usersVoted: MyString
-
-two:
-  postid: 
-  usersVoted: MyString
+  postid: 1234
+  numberOfVotes: 0

@@ -1,17 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  description: MyText
-  votesReceived: 
-  postOwner: MyString
-  anonymous: MyString
-  status: MyString
-  spam: MyString
+  postString: what is scaffolding?
+  votesReceived:   12
+  postOwner: aditi
+  anonymous: yes
+  status: dint
+  spam: Mmdndfn
+  user_id: 20220
+  parentPostID: 25636
+
 
 two:
-  description: MyText
-  votesReceived: 
-  postOwner: MyString
-  anonymous: MyString
-  status: MyString
-  spam: MyString
+  postString: what is scandfjffolding?
+  postOwner: aditi
+  anonymous: yes
+  status: dint
+  spam: Mmdndfn
+  user_id: 1234
+  parentPostID: 25636556

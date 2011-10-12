@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LoginTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+ test "require all" do
+   r = logins.one
+   assert_false r.valid?
+ end
+
+
 end
