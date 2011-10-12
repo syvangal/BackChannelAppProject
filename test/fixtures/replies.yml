@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  postId: 
-  reply: MyText
-  repliedUser: MyString
+  postId: 1234
+  reply: addddddd
+  repliedUser: addsa
 
 two:
   postId: 
