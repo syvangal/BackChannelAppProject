@@ -5,6 +5,12 @@ class LoginsController < ApplicationController
   def index
     session[:userName] = nil
     session[:role]= nil
+    @adminCheck = User.find_by_role("admin")
+    if(@adminCheck == nil)
+      puts "inside the if"
+    @admin=User.new(:userName=> "adminaccount", :password=>"admin123",:unityId=>"admin123",:emailAddress=>"admin@gmail.com",:role=>"admin")
+    @admin.save
+      end
     end
 
 
