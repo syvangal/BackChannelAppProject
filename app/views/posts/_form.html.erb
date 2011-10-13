@@ -10,11 +10,10 @@
       </ul>
     </div>
   <% end %>
-
     <div class="field" style="visibility: hidden;">
         <%= f.label :userName %><br />
-        <%= select("post","user_id",User.find(:all, :conditions => ["userName= ?", session[:userName]]).collect{ |u| [u.userName, u.password, u.emailAddress, u.role, u.id] }) %>
-      </div>
+           <%= f.hidden_field :user_id, :value=>session[:id] %><br />
+ </div>
 
   <div class="field">
     <%= f.label :postString %><br />
