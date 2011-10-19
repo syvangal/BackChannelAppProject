@@ -1,4 +1,3 @@
-
                                   BackChannelApp Project-APS Team
 
 1.       Individuals working on this project
@@ -8,11 +7,13 @@ Aaditi Dhikle	abdhikle
 Swamy Yasawi Vangala	syvangal
 Pratyush Karli	pkarli
  
-2.	Test framework used : Test::Unit
+2 Test framework used : Test::Unit and Capybara
  
-3.	Starting URL for the application:  http://127.0.0.1:3000/login
+3.Starting URL for the application:  http://sharp-sunrise-3639.heroku.com
 
-4.	Other notes 
+4. Extra Credit feature : Capybara Integration testing
+
+5.Other notes 
 
 Application Features :
 User login:
