@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  #this is to cehck the session so we redirect to application controller, authorize method.
+  #this is to check the session hence we redirect to application controller, authorize method.
   #before_filter :authorize, :except => :new
   def index
     @users = User.all
@@ -76,11 +76,11 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-
     respond_to do |format|
-      format.html { redirect_to users_url }
+   if @user.update_attribute(:userName,"anonymous")
+      format.html { redirect_to users_path, notice: 'User was successfully deleted.' }
       format.json { head :ok }
     end
+  end
   end
 end
