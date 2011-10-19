@@ -84,5 +84,5 @@ class MyTest < ActionDispatch::IntegrationTest
     visit '/users'
     assert page.has_content?("You are not authorized to view this page")
 
-     end
+    end
 end
