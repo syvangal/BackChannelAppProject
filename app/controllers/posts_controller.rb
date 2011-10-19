@@ -241,7 +241,7 @@ class PostsController < ApplicationController
 
         weight=50-diff+nVotes
         upPost=Post.find(ppostID)
-        upPost.update_attribute("weight",weight)
+        upPost.update_attribute(:weight,weight)
     end
 
 end

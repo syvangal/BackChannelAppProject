@@ -1,5 +1,5 @@
 <h1>Listing users</h1>
-
+   <p id="notice" style="color: red"><%= notice %></p>
 <table border="1">
   <tr>
     <th>Username</th>
@@ -11,14 +11,18 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.userName %></td>
+    <% if(user.userName != 'anonymous') %>
+   <td><%= user.userName %></td>
     <td><%= user.unityId %></td>
     <td><%= user.emailAddress %></td>
     <td><%= user.role %></td>
 
-    <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
+        <% if(user.userName != 'adminaccount') %>
+    <td><%= button_to "delete", user, :method=>:delete, :class=>:destroy %></td>
+            <% end %>
+    <% end %>
   </tr>
 <% end %>
 </table>
