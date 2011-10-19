@@ -2,9 +2,6 @@
 
 <%= render 'form' %>
 
-
-
-
  <% if(session[:role] == 'admin') %>
    <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

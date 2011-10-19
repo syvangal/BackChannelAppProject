@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   #This method is to check whether teh session exists for the user to see the required page/screen
   #If not we redirect to the login screen
-  #Ex:When a user randomly try to open certain links of page (http://127.0.0.1:3000/posts)
+  #Ex:When a user randomly try to open certain link of page (http://127.0.0.1:3000/posts)
     def authorize
     if(session[:userName]!='nil')
       unless User.find_by_userName(session[:userName])

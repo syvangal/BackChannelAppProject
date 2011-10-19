@@ -1,16 +1,17 @@
 class LoginsController < ApplicationController
   # GET /logins
   # GET /logins.json
-  #This method is to show the login screen when redirected with sessions cleared.
+  #This method is to show the login screen with sessions cleared.
   def index
     session[:userName] = nil
     session[:role]= nil
     @adminCheck = User.find_by_role("admin")
     if(@adminCheck == nil)
-     @admin=User.new(:userName=> "adminaccount", :password=>"admin123",:unityId=>"admin123",:emailAddress=>"admin@gmail.com",:role=>"admin")
+    @admin=User.new(:userName=> "adminaccount", :password=>"admin123",:unityId=>"admin123",:emailAddress=>"admin@gmail.com",:role=>"admin")
     @admin.save
       end
-  end
+    end
+
 
   # POST /logins
   # POST /logins.json
@@ -20,7 +21,6 @@ class LoginsController < ApplicationController
   #On success we redirect to the Posts/index if not then Login screen.
   def create
   @user= User.find_by_userName(params[:name])
-
   if(@user == nil)
       flash[:notice] = "Incorrect Username/Password"
        redirect_to(:controller => "logins", :action => "index")

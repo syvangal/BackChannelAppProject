@@ -28,15 +28,12 @@
 </p>
 
 
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% if(session[:role] == 'admin') %>
    <%= link_to 'See posts', posts_path %>
     <% else %>
    <%= link_to 'Login Page', logins_path %>
 <% end %>
-
-
 
 
 
