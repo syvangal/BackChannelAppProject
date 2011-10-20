@@ -1,4 +1,3 @@
-require "test/unit"
 require 'integration_test_helper'
 
 
